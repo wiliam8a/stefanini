@@ -18,6 +18,7 @@ struct Application: Decodable, Identifiable {
     var price: Float
     var comments: [Comment]
     var category: Category
+    var installed: Bool
     enum Category: String, CaseIterable, Codable {
         case lakes = "Juegos"
         case rivers = "Redes Sociales"

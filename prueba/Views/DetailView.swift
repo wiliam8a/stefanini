@@ -86,11 +86,11 @@ struct appDetail: View {
                     Button(action: {
                         
                     }, label: {
-                        Text("Instalar")
+                        Text(app.installed ? "Instalado" : "Instalar")
                             .fontWeight(.bold)
                             .foregroundColor(.white)
                             .padding()
-                            .background(Color.green)
+                            .background(app.installed ? Color.gray : Color.green)
                             .cornerRadius(10)
                             .shadow(radius: 10)
                     })
