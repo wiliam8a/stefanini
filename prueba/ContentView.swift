@@ -8,19 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var modelData: ModelData
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            VStack (alignment: .leading){
+                HStack(){
+                    Image("logo")
+                    Spacer()
+                }.padding()
+                List {
+
+                    ForEach(modelData.categories.keys.sorted(), id: \.self) { key in
+                        CategoryRow(categoryName: key, items: modelData.categories[key]!)
+                        Spacer()
+                    }
+                    .listRowInsets(EdgeInsets())
+                }
+            }
         }
-        .padding()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(ModelData())
     }
 }
